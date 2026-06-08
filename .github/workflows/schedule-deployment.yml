@@ -1,30 +1,44 @@
-name: Scheduled Portfolio Expansion
+name: Deploy Portfolio and Projects
 
 on:
-  schedule:
-    # Triggers automatically every single day at 00:00 UTC (5:30 AM IST)
-    - cron: '0 0 * * *'
-  workflow_dispatch: # Allows manual trigger testing if needed
+  push:
+    branches: ["main"] # Triggers instantly whenever you push new code
+  workflow_dispatch:   # Allows manual trigger testing
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: true
 
 jobs:
-  deploy-project:
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
-    - name: Checkout Code Matrix
-      uses: actions/checkout@v4
+      - name: Checkout Code
+        uses: actions/checkout@v4
 
-    - name: Dynamically Inject Day 2 Subpage
-      run: |
-        # Copies the folder into the root so it forms its own URL path
-        if [ -d "projects/day2-sip" ]; then
-          echo "Release window verified. Deploying Day 2 subpage..."
-          cp -r projects/day2-sip .
-        fi
+      # Copies your SIP calculator files into the root directory during the build step
+      - name: Move SIP Calculator to Root Path (Optional)
+        run: |
+          if [ -d "projects/day2-sip" ]; then
+            cp -r projects/day2-sip/* .
+          fi
 
-    - name: Commit Tracking Update
-      run: |
-        git config --global user.name "pythonuser-2"
-        git config --global user.email "pythonuser-2@users.noreply.github.com"
-        git add .
-        git diff-index --quiet HEAD || git commit -m "Automated System Check: Day 2 Subpage live"
-        git push origin main
+      - name: Setup Pages
+        uses: actions/configure-pages@v4
+
+      - name: Upload Artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: '.' # Uploads everything in the workspace
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
