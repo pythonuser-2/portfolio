@@ -1,0 +1,31 @@
+name: Scheduled Portfolio Expansion
+
+on:
+  schedule:
+    # Triggers automatically every single day at 00:00 UTC (5:30 AM IST)
+    - cron: '0 0 * * *'
+  workflow_dispatch: # Allows manual trigger testing if needed
+
+jobs:
+  deploy-project:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout Code Matrix
+      uses: actions/checkout@v4
+
+    - name: Dynamically Inject Day 2 Assets
+      run: |
+        # Verifies the project folder exists before migrating files to the root
+        if [ -d "projects/day2-sip" ]; then
+          echo "Release window verified. Migrating Day 2 matrix to root..."
+          cp -r projects/day2-sip/* .
+        fi
+
+    - name: Commit Tracking Update
+      run: |
+        git config --global user.name "pythonuser-2"
+        git config --global user.email "pythonuser-2@users.noreply.github.com"
+        git add .
+        # Prevents script from crashing if no changes are found
+        git diff-index --quiet HEAD || git commit -m "Automated System Check: Day 2 Framework deployed"
+        git push origin main
