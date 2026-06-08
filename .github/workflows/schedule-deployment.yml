@@ -3,7 +3,7 @@ name: Deploy Portfolio and Projects
 on:
   push:
     branches: ["main"] # Triggers instantly whenever you push new code
-  workflow_dispatch:   # Allows manual trigger testing
+  workflow_dispatch: # Allows manual trigger testing
 
 permissions:
   contents: read
@@ -24,20 +24,13 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v4
 
-      # Copies your SIP calculator files into the root directory during the build step
-      - name: Move SIP Calculator to Root Path (Optional)
-        run: |
-          if [ -d "projects/day2-sip" ]; then
-            cp -r projects/day2-sip/* .
-          fi
-
       - name: Setup Pages
         uses: actions/configure-pages@v4
 
       - name: Upload Artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: '.' # Uploads everything in the workspace
+          path: '.' # Uploads your exact repository folder structure as-is
 
       - name: Deploy to GitHub Pages
         id: deployment
