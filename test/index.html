@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Abhimanyu KM</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,400;0,700;1,400&family=Space+Grotesk:wght@400;700&display=swap" rel="stylesheet">
+    
+    <!-- Dependencies -->
+    <script src="https://unpkg.com/@studio-freight/lenis@1.0.33/dist/lenis.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://unpkg.com/split-type"></script>
+    <script src="https://cdn.jsdelivr.net/npm/interactjs/dist/interact.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.4/howler.min.js"></script>
+    
+    <!-- CORE STYLES -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- BOOT SEQUENCE -->
+    <div id="boot-screen">
+        <div class="boot-text" id="bt1">SYSTEM.INITIALIZE()</div>
+        <div class="boot-text" id="bt2">LOADING NEURAL CACHE... [OK]</div>
+        <div class="boot-text" id="bt3">SYNCING WITH KOCHI RELAY... [OK]</div>
+        <div class="boot-text" id="bt4">AUTHENTICATING USER: ABHIMANYU KM</div>
+        <div class="boot-text" id="bt5">DEPLOYING INTERFACE.</div>
+    </div>
+
+    <!-- BACKGROUND SYSTEMS -->
+    <div class="grid-blueprint"></div>
+    <canvas id="bg-canvas"></canvas>
+    <div id="system-logs"></div>
+
+    <!-- CUSTOM CURSOR -->
+    <svg id="cursor-svg" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M7 2L17 12L12 14L15 21L12 22L9 15L4 18V2Z" fill="#00ff66" stroke="#050505" stroke-width="1"/>
+    </svg>
+
+    <!-- NAVIGATION -->
+    <nav>
+        <div class="logo">SYS.<span>NODE</span></div>
+        <div class="nav-links">
+            <button class="nav-btn magnetic" onclick="lenis.scrollTo('#home')">Identity</button>
+            <button class="nav-btn magnetic" onclick="lenis.scrollTo('#about')">About Me</button>
+            <button class="nav-btn magnetic" onclick="lenis.scrollTo('#projects')">Logs</button>
+            <button class="nav-btn magnetic" onclick="lenis.scrollTo('#arsenal')">Arsenal</button>
+            <button class="nav-btn magnetic" onclick="lenis.scrollTo('#roadmap')">Timeline</button>
+            <button class="nav-btn magnetic" onclick="lenis.scrollTo('#contact')">Contact</button>
+        </div>
+    </nav>
+
+    <div class="container">
+        
+        <!-- SECTION: HERO -->
+        <section id="home">
+            <div class="hero-grid">
+                <div class="hero-text">
+                    <h1 class="hero-title reveal-text">ABHIMANYU K M<br><span> DEVELOPER</span></h1>
+                    <p class="hero-desc reveal-fade">ONE COMMIT AT A TIME</p>
+                    <button class="nav-btn magnetic" style="color:var(--neon-green); font-size:1rem;" onclick="document.dispatchEvent(new KeyboardEvent('keydown', {'key': '`'}))">> INITIATE_TERMINAL</button>
+                </div>
+                
+                <!-- PROFILE SCANNER HUD -->
+                <div class="profile-container magnetic-card" id="profile-scanner">
+                    <div class="card-glare"></div>
+                    <div class="scan-line"></div>
+                    <div class="hud-corners"></div>
+                    
+                    <!-- HUD Data Overlay -->
+                    <div class="hud-overlay-data">
+                        <div class="hud-line">TARGET ACQUIRED</div>
+                        <div class="hud-line">ID: ABHIMANYU KM</div>
+                        <div class="hud-line">CLASS: GENERALIST</div>
+                        <div class="hud-line">THREAT: UNKNOWN</div>
+                        <div class="hud-line">CPU: 97% // FOCUS: 100%</div>
+                    </div>
+
+                    <img src="profile.jpeg" alt="Abhimanyu" class="profile-pic" onerror="this.src='https://via.placeholder.com/300x300/050505/00ff66?text=SYS+NODE';"/>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION: ABOUT ME -->
+        <section id="about">
+            <h2 class="section-header reveal-text">Bio-Matrix: Personal Metrics</h2>
+            <div class="matrix-grid">
+                <div class="matrix-box magnetic-card">
+                    <div class="card-glare"></div>
+                    <h3>Personal Identification</h3>
+                    <ul class="arsenal-list">
+                        <li>Name: Abhimanyu KM</li>
+                        <li>Country of Origin: India</li>
+                        <li>Current Location: Kochi, Kerala</li>
+                        <li>Academic Status: BTech Computer Science Student at TIST</li>
+                        
+                        
+                        
+                        <li>Philosophy: Clean Execution Over Inflated Complexity</li>
+                    </ul>
+                </div>
+                <div class="matrix-box magnetic-card">
+                    <div class="card-glare"></div>
+                    <h3>Core Parameters</h3>
+                    <ul class="arsenal-list">
+                        <li>Designation: Generalist by Choice</li>
+                        <li>Operational Focus: System Automation & Logic</li>
+                        <li>Preferred Environment: Local Deployment & Testing</li>
+                        <li>Development Style: Modular & Scalable</li>
+                        <li>Core Competencies: C Programming, Python Automation, Web Deployment</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION: LOGS (PROJECTS) -->
+        <section id="projects">
+            <h2 class="section-header reveal-text"> Engineering Logs</h2>
+            <div class="log-container">
+                
+                <div class="log-entry magnetic-card">
+                    <div class="card-glare"></div>
+                    <div class="log-meta">Local Node Deployment</div>
+                    <h3 class="log-title">Server Architecture</h3>
+                    <p class="log-content">Engineered custom responsive interfaces and formatted local server deployments for coursework micro-projects.</p>
+                    <div class="compile-log">> Compiling HTML/CSS... █████████ Done [0.021s]</div>
+                </div>
+
+                <div class="log-entry magnetic-card">
+                    <div class="card-glare"></div>
+                    <div class="log-meta">Algorithmic Restructuring</div>
+                    <h3 class="log-title">Matrix Logic Design</h3>
+                    <p class="log-content">Designed structured array data matrices and sorting architectures in C, optimizing lower-level parsing.</p>
+                    <div class="compile-log">> Sorting Matrix... █████████ OK [0.011s]</div>
+                </div>
+
+                <div class="log-entry magnetic-card">
+                    <div class="card-glare"></div>
+                    <div class="log-meta">Telemetry Tracking</div>
+                    <h3 class="log-title">Motorsport Analytics</h3>
+                    <p class="log-content">Conducted structured data tracking using professional F1 race classification standards and dynamic web rendering.</p>
+                    <div class="compile-log">> Fetching F1 Data... █████████ OK [0.045s]</div>
+                </div>
+
+                <div class="log-entry magnetic-card">
+                    <div class="card-glare"></div>
+                    <div class="log-meta">Capital Allocation</div>
+                    <h3 class="log-title">Systematic Modeling</h3>
+                    <p class="log-content">Formulated quantitative asset distribution models via disciplined digital platform tracking and systematic investment plans.</p>
+                    <div class="compile-log">> Processing SIPs... █████████ OK [0.019s]</div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- SECTION: ARSENAL -->
+        <section id="arsenal">
+            <h2 class="section-header reveal-text">Tech Arsenal</h2>
+            <div class="matrix-grid">
+                <div class="matrix-box magnetic-card">
+                    <div class="card-glare"></div>
+                    <h3>Syntax & Architecture</h3>
+                    <ul class="arsenal-list">
+                        <li>C Programming</li>
+                        <li>Python Automation</li>
+                        <li>Logic Design & Restructuring</li>
+                    </ul>
+                </div>
+                <div class="matrix-box magnetic-card">
+                    <div class="card-glare"></div>
+                    <h3>Deployment & Render</h3>
+                    <ul class="arsenal-list">
+                        <li>HTML5 & CSS3</li>
+                        <li>Local Web Server Deployment</li>
+                        <li>DOM Manipulation</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION: ROADMAP / TIMELINE -->
+        <section id="roadmap">
+            <h2 class="section-header reveal-text">Mission Timeline</h2>
+            <div class="timeline-container">
+                <div class="timeline-item reveal-fade">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content magnetic-card">
+                        <div class="card-glare"></div>
+                        <h4>2026 // Current Objective</h4>
+                        <p>Expanding expertise in software engineering systems and optimizing localized server structures.</p>
+                    </div>
+                </div>
+                <div class="timeline-item reveal-fade">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content magnetic-card">
+                        <div class="card-glare"></div>
+                        <h4>2025 // Initial Access</h4>
+                        <p>Established foundation in computational logic, C programming arrays, and web interface foundations.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION: CONTACT -->
+        <section id="contact">
+            <h2 class="section-header reveal-text">Active Communication Nodes</h2>
+            <div class="matrix-grid">
+                <div class="matrix-box magnetic-card" style="grid-column: 1 / -1;">
+                    <div class="card-glare"></div>
+                    <h3 style="margin-bottom: 2rem;">SYS.CONNECT // Direct Channels</h3>
+                    <div style="display: flex; flex-direction: column; gap: 1.5rem; font-size: 1rem;">
+                        <div><span style="color: var(--text-muted); width: 110px; display: inline-block;">GMAIL //</span> <a href="mailto:abhisan770@gmail.com" target="_blank" style="color: var(--text-main); border-bottom: 1px solid var(--neon-green); text-decoration: none;">abhisan770@gmail.com</a></div>
+                        <div><span style="color: var(--text-muted); width: 110px; display: inline-block;">GITHUB //</span> <a href="https://github.com/pythonuser-2" target="_blank" style="color: var(--text-main); border-bottom: 1px solid var(--neon-green); text-decoration: none;">pythonuser-2</a></div>
+                        <div><span style="color: var(--text-muted); width: 110px; display: inline-block;">LINKEDIN //</span> <a href="https://linkedin.com/in/abhimanyu-km" target="_blank" style="color: var(--text-main); border-bottom: 1px solid var(--neon-green); text-decoration: none;">Abhimanyu Km</a></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- EASTER EGG LAYERS -->
+    <div id="matrix" class="section-anchor" aria-hidden="true"></div>
+    <canvas id="matrix-canvas"></canvas>
+    <div id="panic-overlay"></div>
+
+    <!-- OS WINDOW SYSTEM (TERMINAL) -->
+    <div id="terminal-window" class="os-window">
+        <div class="window-header drag-handle">
+            <span class="window-title">SYS.TERMINAL // root@abhimanyu-node</span>
+            <div class="window-controls">
+                <button class="win-btn minimize-btn">_</button>
+                <button class="win-btn maximize-btn">□</button>
+                <button class="win-btn close-btn" onclick="document.getElementById('terminal-window').style.display='none'">×</button>
+            </div>
+        </div>
+        <div class="window-content terminal-body">
+            <div id="terminal-output">
+                <div>> SYSTEM TERMINAL ACCESSED</div>
+                <div>> TYPE 'help' FOR AVAILABLE COMMANDS</div>
+            </div>
+            <div class="terminal-input-line">
+                <span class="prompt">guest@sys:~#</span>
+                <input type="text" id="terminal-input" autocomplete="off" spellcheck="false">
+            </div>
+        </div>
+    </div>
+
+    <!-- TICKER (10s High Velocity) -->
+    <div class="ticker-wrap">
+        <div class="ticker">
+            ABHIMANYU KM // COMPUTER SCIENCE // SYSTEMS ENGINE // APEX RUN // LOCAL DEPLOYMENT COMPLETE // DATA DRIVEN LOGIC // AUTOMATION PROTOCOLS ACTIVE // ABHIMANYU KM // COMPUTER SCIENCE // SYSTEMS ENGINE // APEX RUN //
+        </div>
+    </div>
+
+    <footer>
+        Created by ABHIMANYU &copy; 2026
+    </footer>
+
+    <!-- CORE SCRIPTS -->
+    <script src="main.js"></script>
+    <script src="terminal.js"></script>
+</body>
+</html>
